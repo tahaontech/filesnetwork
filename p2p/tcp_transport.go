@@ -33,7 +33,7 @@ func (p *TCPPeer) Send(b []byte) error {
 
 type TCPTransportOpts struct {
 	ListenAddr    string
-	HandShakeFunc HandShakeFunc
+	HandShakeFunc HandshakeFunc
 	Decoder       Decoder
 	OnPeer        func(Peer) error
 }

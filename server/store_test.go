@@ -1,9 +1,9 @@
-package main
+package server
 
 import (
 	"bytes"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"testing"
 )
 
@@ -22,6 +22,8 @@ func TestPathTransformFunc(t *testing.T) {
 }
 
 func TestStore(t *testing.T) {
+
+	// TODO: problem with process permissions in windows
 	s := newStore()
 	id := generateID()
 	defer teardown(t, s)
@@ -43,7 +45,7 @@ func TestStore(t *testing.T) {
 			t.Error(err)
 		}
 
-		b, _ := ioutil.ReadAll(r)
+		b, _ := io.ReadAll(r)
 		if string(b) != string(data) {
 			t.Errorf("want %s have %s", data, b)
 		}

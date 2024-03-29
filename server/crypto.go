@@ -1,4 +1,4 @@
-package main
+package server
 
 import (
 	"crypto/aes"
@@ -20,7 +20,7 @@ func hashKey(key string) string {
 	return hex.EncodeToString(hash[:])
 }
 
-func newEncryptionKey() []byte {
+func NewEncryptionKey() []byte {
 	keyBuf := make([]byte, 32)
 	io.ReadFull(rand.Reader, keyBuf)
 	return keyBuf
